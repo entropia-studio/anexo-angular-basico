@@ -1,0 +1,9 @@
+<p><a routerLink="/vehicles">Vehicles</a></p>
+<div *ngIf="vehicle$ | async as vehicle">
+  <app-vehicle-form
+    [vehicle]="vehicle"
+    (updateVehicle)="updateVehicle($event)"
+    (createVehicle)="createVehicle($event)"
+    (deleteVehicle)="delete($event)"
+  ></app-vehicle-form>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="create-new">
+    <a [routerLink]="['/vehicles', 'new']">Create new</a>
+  </div>
+  <table class="vehicles-table" rules="all">
+    <tr class="header">
+      <td>id</td>
+      <td>Name</td>
+      <td>Branch</td>
+      <td>Price</td>
+      <td>Fuel</td>
+      <td>Transmission</td>
+      <td>Action</td>
+    </tr>
+    <tr *ngFor="let vehicle of vehicles$ | async; index as i">
+      <td>{{ vehicle.id }}</td>
+      <td>
+        <a [routerLink]="['/vehicles', vehicle.id]"> {{ vehicle.name }}</a>
+      </td>
+      <td>{{ vehicle.branch }}</td>
+      <td>{{ vehicle.price | currency }}</td>
+      <td>{{ vehicle.fuel }}</td>
+      <td>{{ vehicle.transmission }}</td>
+      <td><button (click)="deleteVehicle(vehicle.id)">Delete</button></td>
+    </tr>
+  </table>
+</div>
