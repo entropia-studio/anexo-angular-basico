@@ -7,7 +7,7 @@ import { Vehicle } from '../models/vehicle';
 @Injectable({
   providedIn: 'root'
 })
-export class VehiclesService {  
+export class VehiclesService {
 
   private vehiclesUrl = 'api/vehicles';  // URL to web api
 
@@ -29,7 +29,7 @@ export class VehiclesService {
     return this.httpClient.delete<string>(`${this.vehiclesUrl}/${id}`);
   }
 
-  createVehicle(vehicle: Vehicle): Observable<Vehicle>{
+  createVehicle(vehicle: Vehicle): Observable<Vehicle> {
     return this.httpClient.put<Vehicle>(`${this.vehiclesUrl}`, vehicle);
   }
 }

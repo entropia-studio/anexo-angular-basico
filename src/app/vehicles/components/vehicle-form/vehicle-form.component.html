@@ -1,29 +1,43 @@
 <form [formGroup]="formVehicle">
-    <div>
-        <table class="vehicles-table">
-          <tr>
-            <th>Name</th>
-            <th>Branch</th>
-            <th>Price</th>
-            <th>Fuel</th>
-            <th>Transmission</th>
-          </tr>
-          <tr>
-            <td><input type="text" formControlName="name"></td>
-            <td><input type="text" formControlName="branch"></td>
-            <td><input type="number" formControlName="price"></td>
-            <td><input type="text" formControlName="fuel"></td>
-            <td><input type="text" formControlName="transmission"></td>      
-          </tr>
-          <tr>
-            <td colspan="5">
-              <div class="actions">
-                <button type="button" (click)="update()" *ngIf="exists" [disabled]="!this.formVehicle.valid">Update</button>&nbsp;&nbsp;
-                <button type="button" (click)="create()" *ngIf="!exists" [disabled]="!this.formVehicle.valid">New</button>
-                <button type="button" (click)="delete()" *ngIf="exists">Delete</button>
-              </div>      
-            </td>
-          </tr>
-        </table>          
-      </div>
+  <div>
+    <div class="d-flex flex-column lh-lg">
+      <input type="text" formControlName="name" placeholder="Name" />
+      <input type="text" formControlName="branch" placeholder="Branch" />
+      <input type="number" formControlName="price" placeholder="Price" class="input-price"/>
+      <input type="text" formControlName="fuel" placeholder="Fuel" />
+      <input
+        type="text"
+        formControlName="transmission"
+        placeholder="Transmission"
+      />
+    </div>
+    <div class="actions">
+      <button
+        type="button"
+        (click)="update()"
+        *ngIf="exists"
+        class="btn btn-primary"
+        [disabled]="!this.formVehicle.valid"
+      >
+        Update</button
+      >&nbsp;&nbsp;
+      <button
+        type="button"
+        (click)="create()"
+        *ngIf="!exists"
+        class="btn btn-primary"
+        [disabled]="!this.formVehicle.valid"
+      >
+        New
+      </button>
+      <button
+        type="button"
+        (click)="delete()"
+        *ngIf="exists"
+        class="btn btn-danger"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
 </form>

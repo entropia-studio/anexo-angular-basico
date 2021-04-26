@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Vehicle } from '../../models/vehicle';
 import { VehiclesService } from '../../services/vehicles.service';
@@ -13,7 +14,8 @@ export class VehiclesListComponent implements OnInit {
   vehicles$: Observable<Vehicle[]> | undefined;
 
   constructor(
-    private vehiclesService: VehiclesService
+    private vehiclesService: VehiclesService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -28,5 +30,9 @@ export class VehiclesListComponent implements OnInit {
     this.vehiclesService.deleteVehicleById(id).subscribe({
       next: () => this.getVehicles()
     });
+  }
+
+  navigateToVehicle(id: number) {
+    this.router.navigate(['/vehicles', id]);
   }
 }
